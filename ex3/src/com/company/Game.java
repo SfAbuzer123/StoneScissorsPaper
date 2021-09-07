@@ -10,6 +10,21 @@ public class Game {
 
     public static void main(String[] args) {
         Game game = new Game();
+        for (int i = 0; i < args.length; i++) {
+            for (int j = 0; j < args.length; j++) {
+                if (i != j){
+                    if (args[i].equals(args[j])){
+                        game.changeInputData();
+                        return;
+                    }
+                }
+            }
+        }
+        if (args.length % 2 == 0)
+        {
+            game.changeInputData();
+            return;
+        }
         game.startGame(args);
     }
 
