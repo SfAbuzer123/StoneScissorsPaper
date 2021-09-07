@@ -46,7 +46,7 @@ public class Game {
         try {
             line = reader.readLine();
             if (line.equals("?")){
-                new TableOfWinners().showTable(args, random);
+                new TableOfWinners().showTable(args);
                 line = reader.readLine();
             }
             else if (Integer.parseInt(line) == 0)
@@ -54,6 +54,7 @@ public class Game {
             reader.close();
         } catch (IOException | NumberFormatException e) {
             changeInputData();
+            return;
         }
         try {
             clientIndex = Integer.parseInt(line);
