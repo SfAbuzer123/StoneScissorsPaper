@@ -2,23 +2,23 @@ package com.company;
 
 public class WinnerDetector {
 
-    public void winLose(String[] arr, int clientIndex, int compIndex) {
+    public String winLose(String[] arr, int clientIndex, int compIndex) {
         if (clientIndex == compIndex){
-            System.out.println("Nobody wins");
-            return;
+            return "DRAW";
         }
         if (clientIndex > arr.length/2){
             if (compIndex < clientIndex && compIndex >= clientIndex - arr.length / 2)
-                System.out.println("You win");
+               return "WIN";
             else
-                System.out.println("You lose");
+                return "LOSE";
         }
         else if (clientIndex <= arr.length / 2){
             if (compIndex > clientIndex && compIndex <= clientIndex + arr.length / 2)
-                System.out.println("You lose");
+                return "LOSE";
             else
-                System.out.println("You win");
+                return "WIN";
         }
+        return null;
     }
 
 }

@@ -69,7 +69,7 @@ public class Game {
         System.out.println("Your move - " + args[clientIndex-1]);
         System.out.println("Computer move - " + args[random]);
         WinnerDetector winnerDetector = new WinnerDetector();
-        winnerDetector.winLose(args, clientIndex-1, random);
+        System.out.println(winnerDetector.winLose(args, clientIndex-1, random));
         System.out.printf("HMAC key: %032x%n", new BigInteger(1, randomKey));
     }
 

@@ -1,33 +1,26 @@
 package com.company;
 
+import com.bethecoder.ascii_table.ASCIITable;
+
 public class TableOfWinners {
     public void showTable(String[] arr) {
-        System.out.print(String.format("%-20s", "you V\\computer ->"));
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(String.format("%-20s", arr[i]));
+        String[] tableHeaders = new String[arr.length+1];
+        tableHeaders[0] = "User\\PC";
+        for (int i = 1; i < tableHeaders.length; i++) {
+            tableHeaders[i] = arr[i-1];
         }
-        System.out.println();
+        String[][] tableData = new String[arr.length][arr.length+1];
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(String.format("%-20s", arr[i] + "    "));
-            for (int j = 0; j < arr.length; j++) {
-                if (i == j){
-                    System.out.print(String.format("%-20s", "draw |"));
-                    continue;
+            for (int j = 0; j < arr.length+1; j++) {
+                if (j == 0){
+                    tableData[i][j] = arr[i];
                 }
-                if (i > arr.length/2){
-                    if (j < i && j >= i - arr.length / 2)
-                        System.out.print(String.format("%-20s", "you win |"));
-                    else
-                        System.out.print(String.format("%-20s", "you lose |"));
+                else{
+                    tableData[i][j] = new WinnerDetector().winLose(arr, i, j -1);
                 }
-                else if (i <= arr.length / 2){
-                    if (j > i && j <= i + arr.length / 2)
-                        System.out.print(String.format("%-20s", "you lose |"));
-                    else
-                        System.out.print(String.format("%-20s", "you win |"));
-                }
+
             }
-            System.out.println();
         }
+        ASCIITable.getInstance().printTable(tableHeaders, tableData);
     }
 }
